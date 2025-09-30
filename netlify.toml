@@ -1,3 +1,9 @@
-[[edge_functions]]
-  path = "/test"
-  function = "geolocation"
+#[[edge_functions]]
+ # path = "/test"
+  #function = "geolocation"
+
+#[[redirects]]
+ # from = "/*"
+  #to = "https://juanpb96.github.io/:splat"
+  #status = 200
+  #force = true

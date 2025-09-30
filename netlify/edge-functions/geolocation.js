@@ -31,3 +31,7 @@ export default async (request, context) => {
     return new Response("Error fetching external content", { status: 500 });
   }
 };
+
+export const config = {
+  path: "/test",
+};
