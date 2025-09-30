@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/test"
+  to = "https://juan-edge-function-test.netlify.app/:splat" 
+  function = "geolocation"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "https://juanpb96.github.io/:splat" 
+  status = 200
