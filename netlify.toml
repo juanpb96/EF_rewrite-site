@@ -1,8 +1,6 @@
-[[redirects]]
-  from = "/test"
-  to = "https://juan-edge-function-test.netlify.app/:splat" 
-  function = "geolocation"
-  status = 200
+[[edge_functions]]
+  path = "/test"
+  function = "handler"
 
 [[redirects]]
   from = "/*"

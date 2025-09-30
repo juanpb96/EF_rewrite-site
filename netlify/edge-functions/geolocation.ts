@@ -8,4 +8,5 @@ export default async function handler(request: Request, context: Context) {
   request.headers.set(GEO_HEADERS.latitude, String(latitude ?? 0));
   request.headers.set(GEO_HEADERS.longitude, String(longitude ?? 0));
   console.log(request.url);
+  return new URL("https://juan-edge-function-test.netlify.app/", request.url);
 }
