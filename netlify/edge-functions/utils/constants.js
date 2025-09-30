@@ -5,4 +5,4 @@ export const GEO_HEADERS = {
   city: `${HEADER_PREFIX}-city`,
   latitude: `${HEADER_PREFIX}-latitude`,
   longitude: `${HEADER_PREFIX}-longitude`,
-} as const;
+};

@@ -1,8 +1,10 @@
-[[edge_functions]]
-  path = "/test"
-  function = "handler"
+[[redirects]]
+  from = "/test/*"
+  to = "https://juanbonilla-fem-weather-app.netlify.app/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
-  to = "https://juanpb96.github.io/:splat" 
+  to = "https://juanpb96.github.io/:splat"
   status = 200

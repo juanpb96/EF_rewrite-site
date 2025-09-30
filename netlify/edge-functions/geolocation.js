@@ -1,12 +1,10 @@
-import { GEO_HEADERS } from "./utils/constants.ts";
-import type { Config, Context } from "@netlify/edge-functions";
+import { GEO_HEADERS } from "./utils/constants.js";
 
-export default async function handler(request: Request, context: Context) {
+export default async (request, context) => {
   const { country, city, latitude, longitude } = context.geo;
   request.headers.set(GEO_HEADERS.country, country?.name ?? "");
   request.headers.set(GEO_HEADERS.city, city ?? "");
   request.headers.set(GEO_HEADERS.latitude, String(latitude ?? 0));
   request.headers.set(GEO_HEADERS.longitude, String(longitude ?? 0));
   console.log(request.url);
-  return new URL("https://juan-edge-function-test.netlify.app/", request.url);
-}
+};
