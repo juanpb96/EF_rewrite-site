@@ -1,9 +1,15 @@
-#[[edge_functions]]
- # path = "/test"
-  #function = "geolocation"
+[[edge_functions]]
+  path = "/test"
+  function = "geolocation"
 
-#[[redirects]]
- # from = "/*"
-  #to = "https://juanpb96.github.io/:splat"
-  #status = 200
-  #force = true
+[[redirects]]
+  from = "/test/_next/*"
+  to = "https://juan-edge-function-test.netlify.app/test/_next/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "https://juanpb96.github.io/:splat"
+  status = 200
+  force = true
+
