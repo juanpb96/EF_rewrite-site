@@ -3,6 +3,11 @@
   function = "geolocation"
 
 [[redirects]]
+  from = "/test/:name.svg"
+  to = "https://juan-edge-function-test.netlify.app/test/:name.svg"
+  status = 200
+
+[[redirects]]
   from = "/test/_next/*"
   to = "https://juan-edge-function-test.netlify.app/test/_next/:splat"
   status = 200

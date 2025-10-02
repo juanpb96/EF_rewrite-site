@@ -1,31 +1,34 @@
 import { GEO_HEADERS } from "./utils/constants.js";
 
 const externalUrl = "https://juan-edge-function-test.netlify.app/test/";
+// const externalUrl = "http://localhost:65104/test";
 
 export default async (request, context) => {
-  // const { country, city, latitude, longitude } = context.geo;
-  // request.headers.set(GEO_HEADERS.country, country?.name ?? "");
-  // request.headers.set(GEO_HEADERS.city, city ?? "");
-  // request.headers.set(GEO_HEADERS.latitude, String(latitude ?? 0));
-  // request.headers.set(GEO_HEADERS.longitude, String(longitude ?? 0));
   console.log(request.url);
 
   try {
-    const response = await fetch(externalUrl);
+    const headers = new Headers(request.headers);
+    headers.set("x-geo-context", JSON.stringify(context.geo));
 
-    // const headers = new Headers(response.headers);
-    // headers.set(GEO_HEADERS.country, country?.name ?? "");
-    // headers.set(GEO_HEADERS.city, city ?? "");
-    // headers.set(GEO_HEADERS.latitude, String(latitude ?? 0));
-    // headers.set(GEO_HEADERS.longitude, String(longitude ?? 0));
-    // return new Response(response.body, { status: response.status, headers });
-    // You can modify headers, status, etc., if needed
-    // For example, to set a specific Content-Type:
-    // const headers = new Headers(response.headers);
-    // headers.set("Content-Type", "text/html");
-    // return new Response(response.body, { status: response.status, headers });
+    const proxyRequest = new Request(externalUrl, {
+      method: request.method,
+      headers: headers,
+      body: request.body,
+    });
 
-    return response; // Return the fetched response directly
+    const geoData = headers.get("x-geo-context");
+
+    if (geoData) {
+      console.log(JSON.parse(geoData));
+    }
+
+    // 2. Add the custom header before fetching
+
+    const response = await fetch(proxyRequest);
+
+    console.log("Initial response:", response);
+
+    return response;
   } catch (error) {
     context.log("Error fetching external resource:", error);
     return new Response("Error fetching external content", { status: 500 });
